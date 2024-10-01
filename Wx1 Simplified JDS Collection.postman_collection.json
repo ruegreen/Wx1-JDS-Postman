@@ -352,7 +352,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"previously\": \"12345\",\n    \"specversion\": \"1.0\",\n    \"type\": \"task:new\",\n    \"source\": \"web\",\n    \"identity\": {{phoneNumber}},\n    \"identitytype\": \"phone\",\n    \"datacontenttype\": \"application/json\",\n    \"data\": {\n        \"taskId\": {{$guid}},\n        \"origin\":\"Website\",\n        \"firstName\": {{firstName}},\n        \"lastName\": {{lastName}},\n        \"phone\": {{phoneNumber}},\n        \"channelType\": \"Page Visit\",\n        \"uiData\": {\n            \"title\": \"Page Visit\",\n            \"iconType\": \"Page Visit\",\n            \"subTitle\": \"Website Order\",\n            \"filterTags\": [\"PageVist\"]\n        }\n    }\n}\n"
+					"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"previously\": \"12345\",\n    \"specversion\": \"1.0\",\n    \"type\": \"task:new\",\n    \"source\": \"web\",\n    \"identity\": \"{{phoneNumber}}\",\n    \"identitytype\": \"phone\",\n    \"datacontenttype\": \"application/json\",\n    \"data\": {\n        \"taskId\": \"{{$guid}}\",\n        \"origin\":\"Website\",\n        \"firstName\": \"{{firstName}}\",\n        \"lastName\": \"{{lastName}}\",\n        \"phone\": \"{{phoneNumber}}\",\n        \"channelType\": \"Page Visit\",\n        \"uiData\": {\n            \"title\": \"Page Visit\",\n            \"iconType\": \"Page Visit\",\n            \"subTitle\": \"Website Order\",\n            \"filterTags\": [\"PageVist\"]\n        }\n    }\n}"
 				},
 				"url": {
 					"raw": "{{baseUrl}}/publish/v1/api/event?workspaceId={{workspaceId}}",
@@ -519,11 +519,11 @@
 		},
 		{
 			"key": "identity",
-			"value": "+1222333444"
+			"value": "1222333444"
 		},
 		{
 			"key": "phoneNumber",
-			"value": "+1222333444",
+			"value": "1222333444",
 			"type": "string"
 		},
 		{
