@@ -266,7 +266,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"specversion\": \"1.0\",\n    \"type\": \"task:new\",\n    \"source\": \"test\",\n    \"identity\": \"bmclella@cisco.com\",\n    \"identitytype\": \"email\",\n    \"datacontenttype\": \"application/json\",\n    \"data\": {\n        \"uiData\": {\n            \"title\": \"Payment Due\",\n            \"iconType\": \"telephony\",\n            \"subTitle\": \"Payment Due 30 days\"\n            }\n    }\n  }"
+					"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"specversion\": \"1.0\",\n    \"type\": \"task:new\",\n    \"source\": \"test\",\n    \"identity\": \"johndoe@somedomain.com\",\n    \"identitytype\": \"email\",\n    \"datacontenttype\": \"application/json\",\n    \"data\": {\n        \"uiData\": {\n            \"title\": \"Payment Due\",\n            \"iconType\": \"telephony\",\n            \"subTitle\": \"Payment Due 30 days\"\n            }\n    }\n  }"
 				},
 				"url": {
 					"raw": "{{baseUrl}}/publish/v1/api/event?workspaceId={{workspaceId}}",
@@ -296,15 +296,17 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"var url = pm.collectionVariables.get(\"MockioURL\") + \"?\" +\"AccountNumber=\" + pm.collectionVariables.get(\"accountNumber\")",
+							"//Get call to Mockio to get all records and print them to the Postman Console",
+							"/*var url = pm.collectionVariables.get(\"MockioURL\") + \"?\" +\"AccountNumber=\" + pm.collectionVariables.get(\"accountNumber\")",
 							"pm.sendRequest(url, (error, response) => {",
 							"  if (error) {",
 							"    console.log(error);",
 							"  } else {",
 							"  console.log(response);",
 							"  }",
-							"});",
+							"});*/",
 							"",
+							"//Add the purchase to Mockio so IVR can find the record based on account number",
 							"var postURL = pm.collectionVariables.get(\"MockioURL\") + \"?\" + \"AccountNumber=\" + pm.collectionVariables.get(\"accountNumber\")",
 							"const postRequest = {",
 							"  url: postURL,",
@@ -350,7 +352,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"specversion\": \"1.0\",\n    \"type\": \"task:new\",\n    \"source\": \"test\",\n    \"identity\": \"bmclella@cisco.com\",\n    \"identitytype\": \"email\",\n    \"datacontenttype\": \"application/json\",\n    \"data\": {\n        \"uiData\": {\n            \"title\": \"Payment Due\",\n            \"iconType\": \"telephony\",\n            \"subTitle\": \"Payment Due 30 days\"\n            }\n    }\n  }"
+					"raw": "{\n    \"id\": \"{{$guid}}\",\n    \"specversion\": \"1.0\",\n    \"type\": \"task:new\",\n    \"source\": \"test\",\n    \"identity\": {{phoneNumber}},\n    \"identitytype\": \"phone\",\n    \"datacontenttype\": \"application/json\",\n    \"data\": {\n        \"uiData\": {\n            \"title\": \"Payment Due\",\n            \"iconType\": \"telephony\",\n            \"subTitle\": \"Payment Due 30 days\"\n            }\n    }\n  }"
 				},
 				"url": {
 					"raw": "{{baseUrl}}/publish/v1/api/event?workspaceId={{workspaceId}}",
@@ -517,11 +519,11 @@
 		},
 		{
 			"key": "identity",
-			"value": "111-222-3333"
+			"value": "+1222333444"
 		},
 		{
 			"key": "phoneNumber",
-			"value": "111-222-3333",
+			"value": "+1222333444",
 			"type": "string"
 		},
 		{
@@ -561,7 +563,7 @@
 		},
 		{
 			"key": "accountNumber",
-			"value": "1112223333",
+			"value": "222333444",
 			"type": "string"
 		}
 	]
